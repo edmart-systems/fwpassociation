@@ -1,0 +1,151 @@
+.custom-color {
+    color: #ff8533 !important;
+    /* text-transform: uppercase; */
+}
+
+
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+html,
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+    font-family: 'Numans', sans-serif;
+}
+
+.toast-success{
+    margin-top: 45px !important; 
+    background: #74B574 !important;
+    background-repeat: no-repeat !important;
+}
+#toast-container>.toast-success {
+    background-image: none !important;
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFC312;
+}
+
+.social_icon span:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.card-header h3 {
+    color: white;
+}
+
+.social_icon {
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn {
+    color: black;
+    background-color: #FFC312 !important;
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.custom-designed-btn {
+    color: #ec8b39 !important;
+    border-color: #ec8b39 !important;
+}
+
+.buttons-copy,
+.buttons-csv,
+.buttons-excel,
+.buttons-pdf,
+.buttons-print {
+    background-color: #5c5349 !important;
+    color: white !important;
+    border-color: white !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
+}
+
+.buttons-copy:hover {
+    color: #ffffff !important;
+    background-color: #ec8b39 !important;
+}
+
+.buttons-csv:hover {
+    color: #ffffff !important;
+    background-color: #ec8b39 !important;
+}
+
+.buttons-excel:hover {
+    color: #ffffff !important;
+    background-color: #ec8b39 !important;
+}
+
+.buttons-pdf:hover {
+    color: #ffffff !important;
+    background-color: #ec8b39 !important;
+}
+
+.buttons-print:hover {
+    color: #ffffff !important;
+    background-color: #ec8b39 !important;
+}
+
+#example_wrapper>.dataTables_paginate>span>.current {
+    background: #ec8b39 !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+.custom-bg {
+    background: #ec8b39 !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #ec8b39 !important;
+    color: white !important;
+}
+
+.custom-pills {
+    color: #ec8b39 !important;
+}
+
+.custom-designed-btn:hover {
+    color: #ffffff !important;
+    background-color: #ec8b39 !important;
+}
+
+.logout {
+    color: white !important;
+}
+
+.logout:hover {
+    text-decoration: none;
+}
+
+.table-holder {
+    display: grid !important;
+    overflow-x: scroll !important;
+}
