@@ -29,6 +29,7 @@
 
 				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
 					@if ($status==="newMember")
+					
 						<div>
 							<div class="alert alert-danger" style="font-size: 12px;" role="alert">
 								Your Accout is<strong> not active</strong> now, please contact the chairman for activation

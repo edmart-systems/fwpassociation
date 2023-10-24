@@ -2,8 +2,8 @@
 
 namespace Illuminate\Foundation\Auth;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -18,8 +18,9 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        $status = "login";
-        return view('auth.login2')->with("status", $status);
+         $user = auth()->user();
+         $status = 'login';
+        return view('auth.login', ['status' => $status, 'user' => $user]);
     }
 
     /**
@@ -100,7 +101,7 @@ trait AuthenticatesUsers
      * Send the response after the user was authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     protected function sendLoginResponse(Request $request)
     {
@@ -113,7 +114,7 @@ trait AuthenticatesUsers
         }
 
         return $request->wantsJson()
-                    ? new Response('', 204)
+                    ? new JsonResponse([], 204)
                     : redirect()->intended($this->redirectPath());
     }
 
@@ -126,15 +127,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        if(Auth::user()->status === "Deactivated") {
-            Auth::logout();
-            return view('auth.login')->with('status', "inactive");
-        }else if(Auth::user()->status === "New") {
-            Auth::logout();
-            return view('auth.login')->with('status', "inactive");
-        } else if(Auth::user()->status === "NewActiveated"){
-            return redirect()->route('biodata');
-        }
+        //
     }
 
     /**
@@ -166,7 +159,7 @@ trait AuthenticatesUsers
      * Log the user out of the application.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function logout(Request $request)
     {
@@ -181,8 +174,8 @@ trait AuthenticatesUsers
         }
 
         return $request->wantsJson()
-            ? new Response('', 204)
-            : redirect('/login');
+            ? new JsonResponse([], 204)
+            : redirect('/');
     }
 
     /**

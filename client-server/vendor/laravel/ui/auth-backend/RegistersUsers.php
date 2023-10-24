@@ -3,10 +3,9 @@
 namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Session;
 
 trait RegistersUsers
 {
@@ -26,29 +25,22 @@ trait RegistersUsers
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
-        //check for member number.
-        if(!str_contains($request->fwpnumber, "FWP")){
-            $request->session()->flash("invalid", "Invalid Details Submited, Please Contact Admin For More Information.");
-            return view('auth.register');
-        }
         $this->validator($request->all())->validate();
-        $inputs = $request->all();
-        $inputs["image"] = "default.jpg";
 
-        event(new Registered($user = $this->create($inputs)));
+        event(new Registered($user = $this->create($request->all())));
 
-        // $this->guard()->login($user);
+        $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
             return $response;
         }
 
         return $request->wantsJson()
-                    ? new Response('', 201)
+                    ? new JsonResponse([], 201)
                     : redirect($this->redirectPath());
     }
 
@@ -71,7 +63,6 @@ trait RegistersUsers
      */
     protected function registered(Request $request, $user)
     {
-        $status = "newMember";
-        return view("auth.login2")->with("status", $status);
+        //
     }
 }

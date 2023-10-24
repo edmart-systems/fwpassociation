@@ -6,6 +6,8 @@ use App\Http\Middleware\checkUser;
 use App\Http\Middleware\CheckStatus;
 use App\Http\Middleware\PreventBackHistory;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -162,3 +164,14 @@ Route::middleware([PreventBackHistory::class])->group(function () {
         });
     
 });
+
+
+
+//   Route::get('/connection', function () {
+//     try{
+//         DB::connection()->getPdo();
+//         return "connected successfully";
+//     }catch (\Exception $e) {
+//     dd($e->getMessage());
+// }
+//  });
